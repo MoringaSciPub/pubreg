@@ -24,6 +24,7 @@ services:
     user: "www-data:www-data"
     ports:
       - 8080:8081
+    container_name: msp_reader
     depends_on:
       - ipfsd
       - dogecoin
