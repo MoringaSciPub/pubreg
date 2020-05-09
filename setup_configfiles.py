@@ -90,4 +90,5 @@ if __name__ == '__main__':
         os.mkdir(filename)
     else:
         print("directory %s already exists." %filename)
-    print("All files have been set up. You may now start the system with 'docker-compose up'. Have fun!")
+    print("All files have been set up. You may now start the system with 'docker-compose up --build' and connect " +
+          "to the server at http://localhost:8080. Have fun!")
