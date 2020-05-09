@@ -11,6 +11,46 @@ def get_random_alphaNumeric_string(stringLength=16):
 if __name__ == '__main__':
     print("This script will set up all required config files and directories for the reader service. If files already exist, they "+
           "will be renamed to xxx.bak.")
+    # find user id
+    uid = os.getuid()
+    print("We will use your user id %d for the service users in the docker files. If you do not like this, "
+          "please change the values in the Dockerfiles.")
+    filename = os.path.join("dogecoin_service", "Dockerfile")
+    print("Changing UID to %d in %s" %(uid, filename))
+    with open(filename, 'r') as file:
+        data = file.read().replace('ENV USERID 1000', 'ENV USERID '+str(uid))
+        file.close()
+    os.rename(filename, filename+'.bak')
+    with open(filename, 'w') as file:
+        file.write(data)
+        file.close()
+    filename = os.path.join("ipfsd", "Dockerfile")
+    print("Changing UID to %d in %s" % (uid, filename))
+    with open(filename, 'r') as file:
+        data = file.read().replace('ENV USERID 1000', 'ENV USERID ' + str(uid))
+        file.close()
+    os.rename(filename, filename + '.bak')
+    with open(filename, 'w') as file:
+        file.write(data)
+        file.close()
+    filename = os.path.join("reader", "Dockerfile")
+    print("Changing UID to %d in %s" % (uid, filename))
+    with open(filename, 'r') as file:
+        data = file.read().replace('ENV USERID 1000', 'ENV USERID ' + str(uid))
+        file.close()
+    os.rename(filename, filename + '.bak')
+    with open(filename, 'w') as file:
+        file.write(data)
+        file.close()
+    filename = os.path.join("docker-compose.yml")
+    print("Changing UID to %d in %s" % (uid, filename))
+    with open(filename, 'r') as file:
+        data = file.read().replace('user: "1000', 'user: "' + str(uid))
+        file.close()
+    os.rename(filename, filename + '.bak')
+    with open(filename, 'w') as file:
+        file.write(data)
+        file.close()
     # create dogecoin.conf
     dogeaddress = "DPsVStLw5XwU2H42wNj9nf9Un4AraDv71B"
     dcrpcuser = "reader" + get_random_alphaNumeric_string(stringLength=4)
@@ -28,7 +68,7 @@ if __name__ == '__main__':
         outf.close()
     # create blockchainconf.json
     # test for existing file and rename.
-    filename = os.path.join("reader", "blockchainconf.json")
+    filename = os.path.join("reader", "readerconf.json")
     print("setting up ", filename)
     if os.path.isfile(filename):
         os.rename(filename,filename+".bak")
