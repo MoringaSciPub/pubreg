@@ -1,0 +1,31 @@
+version: "3"
+services:
+  ipfsd:
+    build: ipfsd/
+    user: "1000:users"
+    volumes:
+      - ./ipfsd/ipfsdb:/data/ipfs
+    ports:
+      - "4001:4001" #p2p
+      #- "5001:5001" #ipfs webgui
+    container_name: msp_ipfsd
+    restart: always
+  dogecoin:
+    build: dogecoin_service/
+    ports:
+      - "22556:22556" #p2p
+    volumes:
+      - ./dogecoin_service/dogecoindata:/data/dogecoin
+    container_name: msp_dogecoin
+    user: "1000:1000"
+    restart: always
+  mspreader:
+    build: reader/
+    user: "1000:1000"
+    ports:
+      - 8080:8081
+    container_name: msp_reader
+    depends_on:
+      - ipfsd
+      - dogecoin
+    restart: always
