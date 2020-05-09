@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Moringa Scientific Publishing Database</title>
+    <style>
+        a.break {word-break: break-all;}
+    </style>
+</head>
+<body>
+<div style="text-align: center">
+<a href="https://moringa.pub"><img src="static/Mori-Logo-Sig_200.png" style="border: 0; padding-right: 5px; align: middle" alt="Tree Logo"></a></div>
+<h1>Moringa Science Publishing Publication Database</h1>
+<h2>Publishing in Times of Decentralized Science</h2>
+<p>
+    One of the main responsibilities of publishers is to document the publishing of works, i.e. to not only make the work public,
+    but also to add relevant metadata like the name of the author, the date of the publication and the place where it was published.
+    We at <a href="https://moringa.pub">Moringa Science Publishing</a> publish the works mainly on our
+    <a href="https://moringa.pub">web page</a>, but also on the distributed filesystem <a href="https://ipfs.io/">IPFS</a>.
+    This has the advantage that readers can use their webbrowser to access the <a href="https://moringa.pub/ojs/">articles</a>
+    and <a href="https://moringa.pub/books/">books</a>, and can use IPFS in case our webserver is not available. IPFS also
+    automatically makes copies of downloaded works and makes them available to the network again, which keeps published
+    works available and safe.
+</p>
+<p>
+    To further secure the authenticity of this meta data, we use Blockchain as technology. Every publication (for now of articles,
+    we might extend it to books and other works as well) is registered on a private permission less Blockchain by us.
+    This creates a permanent record of our publications together with their metadata.
+</p>
+
+<h2>Blockchainified List of Publications</h2>
+<p>
+    This list contains all works that we have published on the <a href="https://dogecoin.com/">Dogecoin blockchain</a>. You find the links to the texts in
+    <a href="https://moringa.pub/ojs/">our webpage</a>,
+    as well as the IPFS system (linked to the <a href="https://ipfs.io/ipfs/">IPFS.io</a> service, but if you
+    <a href="https://docs.ipfs.io/introduction/usage/">run your own node</a>,
+    you can directly use the <a href="https://docs.ipfs.io/guides/concepts/hashes/">IPFS hash</a> to download the article.
+    Each blockchain transaction contains a signed message with the IPFS hash of the article meta data. The signatur's public
+    key is <tt>22eea0792b1bd631028e3a818f03dbbb87a7ef6fbe8562179066432853d6f1e5</tt>.
+</p>
+<table>
+        <tr>
+        <td>Author</td>
+        <td>Title</td>
+        <td>Date</td>
+        <td>IPFS Hash</td>
+            <td>TXID Proof</td>
+
+    </tr>
+    %for pub in pub_list:
+    <tr>
+        <td>{{pub["author"]}}</td>
+        <td>{{!pub["title"]}}</td>
+        <td>{{pub["date"]}}</td>
+        <td>{{!pub["ipfs"]}}</td>
+        <td>{{!pub["txid"]}}</td>
+    </tr>
+    %end
+</table>
+</body>
+</html>

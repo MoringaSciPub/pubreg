@@ -1,0 +1,4 @@
+ipfsapi
+pynacl
+bottle
+BeautifulSoup4

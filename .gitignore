@@ -1,0 +1,7 @@
+# Created by .ignore support plugin (hsz.mobi)
+.idea
+venv
+__pycache__
+.pyc
+dogecoin.conf
+blockchainconf.json

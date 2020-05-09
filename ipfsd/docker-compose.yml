@@ -1,0 +1,13 @@
+version: '3'
+services:
+  ipfsd:
+    build: .
+    ports:
+      - "127.0.0.1:5001:5001" #rpc0
+      - "4001:4001" #p2p
+      #- "127.0.0.1:8080:8080" #web gateway
+    volumes:
+      - /home/ipfs/ipfsdb:/data/ipfs
+    container_name: ipfsd
+  dogecoin:
+

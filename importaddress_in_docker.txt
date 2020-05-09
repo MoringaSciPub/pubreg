@@ -1,0 +1,3 @@
+docker exec -it dogecoin /bin/bash
+cd /data/dogecoin
+dogecoin-cli -datadir=. -conf=/config/dogecoin.conf importaddress "DPsVStLw5XwU2H42wNj9nf9Un4AraDv71B"

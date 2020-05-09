@@ -1,0 +1,18 @@
+# /etc/systemd/system/dogecoin.service
+# https://www.freedesktop.org/software/systemd/man/systemd.service.html#
+# https://wiki.ubuntuusers.de/Howto/systemd_Service_Unit_Beispiel/
+
+[Unit]
+Description=Docker Compose dogecoin service
+Requires=docker.service
+After=docker.service
+
+[Service]
+Type=simple
+WorkingDirectory=/srv/docker
+ExecStart=/usr/local/bin/docker-compose up -d
+ExecStop=/usr/local/bin/docker-compose down
+
+
+[Install]
+WantedBy=multi-user.target
