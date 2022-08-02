@@ -1,0 +1,21 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build dogecoin image
+      run: docker build dogecoin_service/. --file dogecoin_service/Dockerfile --tag dogecoinservice:$(date +%s)
+    - name: Build ipfs image 
+      run: docker build ipfsd/. --file ipfs/Dockerfile --tag ipfsd:$(date +%s)
+
