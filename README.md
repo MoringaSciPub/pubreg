@@ -1,3 +1,5 @@
+[![Docker Image CI](https://github.com/MoringaSciPub/pubreg/actions/workflows/docker-image.yml/badge.svg)](https://github.com/MoringaSciPub/pubreg/actions/workflows/docker-image.yml)
+
 # Moringa Science Publishing Blockchain Publication Registry
 
 This repository hosts our blockchain (Dogecoin :-) ) based publication registry. 
