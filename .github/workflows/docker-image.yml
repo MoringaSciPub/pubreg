@@ -16,6 +16,4 @@ jobs:
     - uses: actions/checkout@v3
     - name: Build dogecoin image
       run: docker build dogecoin_service/. --file dogecoin_service/Dockerfile --tag dogecoinservice:$(date +%s)
-    - name: Build ipfs image 
-      run: docker build ipfsd/. --file ipfs/Dockerfile --tag ipfsd:$(date +%s)
-
+    
