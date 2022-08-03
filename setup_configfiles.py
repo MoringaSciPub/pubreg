@@ -65,6 +65,7 @@ if __name__ == '__main__':
         outf.write("rpcallowip=::/0 # allow from everywhere because we don't know the IP of the docker host\n")
         outf.write("rpcuser="+ dcrpcuser+"\n")
         outf.write("rpcpassword="+ dcpass+"\n")
+        outf.write("rpcbind=0.0.0.0\n")
         outf.close()
     # create blockchainconf.json
     # test for existing file and rename.
